@@ -140,7 +140,7 @@ describe('cliente simulado', () => {
   });
 
   it('T23g: applyResults rejeita sem aplicar nada', () => {
-    // Par duplicado: aplicava N e depois lançava, deixando M pendente.
+    // Duplicated pair: it applied N and then threw, leaving M pending.
     const ctx1 = setup();
     ctx1.a.refresh('N');
     ctx1.a.refresh('M');
@@ -158,7 +158,7 @@ describe('cliente simulado', () => {
     expect(() => ctx1.a.applyResults([opN, opN, opM], [resN, resN, resM])).toThrow(/não corresponde/);
     expect(ctx1.a.prepareOutbox()).toStrictEqual(ops);
 
-    // Resultado com op_id diferente da operação.
+    // Result with an op_id different from the operation.
     const ctx2 = setup();
     ctx2.a.refresh('N');
     ctx2.a.editLocal('N', 't');
@@ -172,7 +172,7 @@ describe('cliente simulado', () => {
     );
     expect(ctx2.a.prepareOutbox()).toStrictEqual(ops2);
 
-    // Operação que não está pendente.
+    // Operation that is not pending.
     const ctx3 = setup();
     ctx3.a.refresh('N');
     ctx3.a.editLocal('N', 't');
@@ -182,8 +182,8 @@ describe('cliente simulado', () => {
     if (res3 === undefined) {
       throw new Error('falha na montagem do teste T23g.');
     }
-    const falsa = { op_id: 'A-999', note_id: 'N', base_revision: 1, text: 'falsa' };
-    expect(() => ctx3.a.applyResults([falsa], [res3])).toThrow(/não corresponde/);
+    const fakeOp = { op_id: 'A-999', note_id: 'N', base_revision: 1, text: 'falsa' };
+    expect(() => ctx3.a.applyResults([fakeOp], [res3])).toThrow(/não corresponde/);
     expect(ctx3.a.prepareOutbox()).toStrictEqual(ops3);
   });
 

@@ -89,12 +89,12 @@ describe('fronteira de entrada', () => {
       { name: 'string', input: 'texto', field: 'operation', code: 'not_object' },
       { name: 'array', input: [], field: 'operation', code: 'not_object' },
       { name: 'date', input: new Date(), field: 'operation', code: 'not_object' },
-      { name: 'instancia de classe', input: new Foo(), field: 'operation', code: 'not_object' },
+      { name: 'instância de classe', input: new Foo(), field: 'operation', code: 'not_object' },
       { name: 'objeto vazio', input: {}, field: 'op_id', code: 'missing_field' },
       { name: 'op_id vazio', input: op('', 'n', 0, 'a'), field: 'op_id', code: 'empty_id' },
-      { name: 'op_id so espacos', input: op('   ', 'n', 0, 'a'), field: 'op_id', code: 'empty_id' },
+      { name: 'op_id só espaços', input: op('   ', 'n', 0, 'a'), field: 'op_id', code: 'empty_id' },
       {
-        name: 'op_id numero',
+        name: 'op_id número',
         input: { op_id: 42, note_id: 'n', base_revision: 0, text: 'a' },
         field: 'op_id',
         code: 'invalid_type',
@@ -107,7 +107,7 @@ describe('fronteira de entrada', () => {
         code: 'invalid_type',
       },
       {
-        name: 'text numero',
+        name: 'text número',
         input: { op_id: 'x', note_id: 'n', base_revision: 0, text: 42 },
         field: 'text',
         code: 'invalid_type',
@@ -131,7 +131,7 @@ describe('fronteira de entrada', () => {
         code: 'invalid_revision',
       },
       {
-        name: 'base fracionaria',
+        name: 'base fracionária',
         input: { op_id: 'x', note_id: 'n', base_revision: 1.5, text: 'a' },
         field: 'base_revision',
         code: 'invalid_revision',
@@ -189,13 +189,13 @@ describe('fronteira de entrada', () => {
       expect(service.getNote('n')).toStrictEqual({ id: 'n', text: '', revision: 1 });
     });
 
-    it('T19: texto com espacos e unicode é preservado exatamente', () => {
+    it('T19: texto com espaços e unicode é preservado exatamente', () => {
       const service = createSyncService();
       service.processOperation(op('x', 'n', 0, '  olá  🌱\n'));
       expect(service.getNote('n')).toStrictEqual({ id: 'n', text: '  olá  🌱\n', revision: 1 });
     });
 
-    it('T19: op_id com espacos é preservado exatamente no recibo', () => {
+    it('T19: op_id com espaços é preservado exatamente no recibo', () => {
       const service = createSyncService();
       const result = service.processOperation(op(' a ', 'n', 0, 'a'));
       expect(result.status).toBe('sucesso');

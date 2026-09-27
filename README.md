@@ -257,5 +257,6 @@ Tempos medidos pelo agente de IA com `date -Iseconds`. Não incluem revisão hum
 | Fase 4 — demo CLI | 2026-09-27T18:29:24-03:00 | 2026-09-27T18:30:22-03:00 | 8 passos, demo e smoke com exit 0. |
 | Fase 5 — README | 2026-09-27T18:36:50-03:00 | 2026-09-27T18:37:23-03:00 | README completo (matriz, destaques, pendências). |
 | Fase 5 — correções da revisão | 2026-09-27T18:41:11-03:00 | 2026-09-27T18:41:29-03:00 | Título das decisões, hash PENDENTE, getter reentrante. |
+| Ajustes de idioma nos testes | 2026-09-27T20:03:42-03:00 | 2026-09-27T20:04:29-03:00 | Comentários em inglês, acentos e fakeOp; 58 testes. |
 
 Tempo humano (revisão, gravação, envio): **PENDENTE — preenchido pelo candidato.**

@@ -15,5 +15,6 @@ Tempos medidos pelo agente de IA com `date -Iseconds`. Não incluem revisão hum
 | Fase 2 — correções da revisão | 2026-09-27T16:51:15-03:00 | 2026-09-27T16:51:41-03:00 | T16 mais estrito (replay mutado) + verificação por mutação do resend. |
 | Fase 3 — cliente simulado | 2026-09-27T16:52:36-03:00 | 2026-09-27T16:53:46-03:00 | T22–T23 (55 testes no total). |
 | Fase 3 — correções da revisão | 2026-09-27T16:56:08-03:00 | 2026-09-27T16:57:41-03:00 | applyResults atômico (Set), T23f–T23h + 3 mutações revertidas. |
+| Fase 4 — demo CLI | 2026-09-27T18:29:24-03:00 | 2026-09-27T18:30:22-03:00 | 8 passos, demo e smoke com exit 0. |
 
 Tempo humano (revisão, gravação, envio): **PENDENTE — preenchido pelo candidato.**

@@ -210,15 +210,15 @@ Sugestões: a limitação do cliente (repetir T22/T23) e a validação antes da 
 
 ### Executado pelo agente
 
-Verificação da fase 5 em 2026-09-27T18:36:57-03:00:
+Verificação da fase 6 em 2026-09-27T20:05:43-03:00 (instalação limpa após `rm -rf dist`):
 
 | Comando | Resultado real |
 |---|---|
-| `npm ci` | 43 pacotes, 0 vulnerabilidades |
-| `npm run typecheck` | sem erros |
-| `npm test` | 3 arquivos, 58 testes passed |
+| `npm ci` | instalação limpa, 0 vulnerabilidades |
+| `npm run typecheck` | sem erros, exit 0 |
+| `npm test` | 3 arquivos, 58 testes passed, exit 0 |
 | `npm run demo` | 20 verificações `[OK]`, `Todas as verificações passaram.`, exit 0 |
-| `npm run build` | sem erros |
+| `npm run build` | sem erros, exit 0; `dist` sem testes |
 | `npm run smoke` | saída idêntica à demo, `Todas as verificações passaram.`, exit 0 |
 
 ### Verificação humana
@@ -258,5 +258,6 @@ Tempos medidos pelo agente de IA com `date -Iseconds`. Não incluem revisão hum
 | Fase 5 — README | 2026-09-27T18:36:50-03:00 | 2026-09-27T18:37:23-03:00 | README completo (matriz, destaques, pendências). |
 | Fase 5 — correções da revisão | 2026-09-27T18:41:11-03:00 | 2026-09-27T18:41:29-03:00 | Título das decisões, hash PENDENTE, getter reentrante. |
 | Ajustes de idioma nos testes | 2026-09-27T20:03:42-03:00 | 2026-09-27T20:04:29-03:00 | Comentários em inglês, acentos e fakeOp; 58 testes. |
+| Fase 6 — verificação final | 2026-09-27T20:05:43-03:00 | 2026-09-27T20:06:19-03:00 | Instalação limpa, 58 testes, 20 OK, checklist 6.2 OK. |
 
 Tempo humano (revisão, gravação, envio): **PENDENTE — preenchido pelo candidato.**

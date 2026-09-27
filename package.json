@@ -1,0 +1,23 @@
+{
+  "name": "caso-05-sincronizacao-notas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Caso 05 — sincronização de notas offline (biblioteca em memória, CLI de demonstração e testes).",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "demo": "tsx src/cli/demo.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "smoke": "node dist/cli/demo.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}

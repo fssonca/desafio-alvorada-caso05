@@ -11,8 +11,10 @@
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run",
     "demo": "tsx src/cli/demo.ts",
+    "demo:edges": "tsx src/cli/demo-edge-cases.ts",
     "build": "tsc -p tsconfig.build.json",
-    "smoke": "node dist/cli/demo.js"
+    "smoke": "node dist/cli/demo.js",
+    "smoke:edges": "node dist/cli/demo-edge-cases.js"
   },
   "devDependencies": {
     "@types/node": "^26.6.3",

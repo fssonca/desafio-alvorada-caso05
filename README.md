@@ -11,8 +11,10 @@ npm ci              # instala as dependências exatas do lockfile
 npm run typecheck   # verifica tipos (tsc, sem emitir)
 npm test            # executa os testes (vitest)
 npm run demo        # executa a demonstração (tsx)
+npm run demo:edges  # executa o cenário adicional com casos de borda
 npm run build       # compila src/ para dist/
 npm run smoke       # executa a demo compilada (node dist/cli/demo.js)
+npm run smoke:edges # executa o cenário adicional compilado (após build)
 ```
 
 ## Demo
@@ -48,6 +50,27 @@ Trecho real de `npm run demo` (passos 7 e 8):
 [OK]     viagem continua inalterada
    esperado:  {"id":"viagem","text":"passagens, hotel","revision":2}
    observado: {"id":"viagem","text":"passagens, hotel","revision":2}
+```
+
+## Demo adicional — casos de borda
+
+Execute `npm run demo:edges`. O arquivo `src/cli/demo-edge-cases.ts` simula o planejamento de uma oficina com dois dispositivos e sete passos:
+
+1. Uma proposta com base positiva chega antes da criação da nota. Seu reenvio continua mostrando ausência, mesmo quando a revisão atual passa a coincidir com a base enviada.
+2. A e B tentam criar a mesma nota com base 0. A cria com texto vazio; B recebe conflito preservando os dois textos.
+3. A perde a resposta da criação e reenvia manualmente a mesma operação. O recibo confirma um único efeito. Depois, uma edição preserva espaços, Unicode e quebra de linha.
+4. B consulta e prepara uma resolução, mas A altera a nota antes do envio: a resolução também conflita e exige outra consulta.
+5. B escolhe explicitamente um texto após nova consulta. A nota chega à revisão 4, enquanto os dois conflitos antigos continuam mostrando revisões 1 e 3.
+6. Um lote mistura ID reutilizado, operação inválida seguida da corrigida com o mesmo ID, entrada inválida com ID conhecido, getter que lança e atualização com texto idêntico. O processamento continua em ordem.
+7. Uma base futura conflita; reutilizar esse ID de conflito para outra nota retorna `id_reutilizado`, preservando o recibo original.
+
+Cada verificação imprime esperado/observado. Erros locais esperados também são conferidos; qualquer divergência resulta em código de saída 1. A resposta perdida é simulada omitindo a confirmação no cliente, sem rede nem temporizadores. As entradas inválidas são injeções diretas no servidor.
+
+Para executar a versão compilada:
+
+```bash
+npm run build
+npm run smoke:edges
 ```
 
 ## Protocolo implementado
